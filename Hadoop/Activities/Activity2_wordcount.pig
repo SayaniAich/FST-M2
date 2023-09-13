@@ -6,7 +6,8 @@ words = FOREACH inputFile GENERATE FLATTEN(TOKENIZE(line)) AS word;
 grpd = GROUP words BY word;
 -- Count the occurence of each word (Reduce)
 cntd = FOREACH grpd GENERATE group, COUNT(words);
--- Store the result in HDFSSTORE cntd INTO 'hdfs:///user/sayani/output1';	
+-- Store the result in HDFS
+STORE cntd INTO 'hdfs:///user/sayani/output1';	
 
 
 
