@@ -1,9 +1,3 @@
-
- 
-
-
- 
-
 -- Create a table to store results
 CREATE TABLE files (line STRING);
  
@@ -11,5 +5,7 @@ CREATE TABLE files (line STRING);
 LOAD DATA LOCAL INPATH '/root/input.txt' INTO TABLE files;
  
 -- Create a new table using data from the files table
-CREATE TABLE word_counts AS SELECT word, count(1) AS count FROM (SELECT explode(split(line, ' ')) AS word FROM files) w GROUP BY word ORDER BY word;
-
+CREATE TABLE word_counts AS SELECT word, 
+count(1) AS count FROM (SELECT explode(split(line, ' ')) AS word FROM files) w
+GROUP BY word 
+ORDER BY word;
